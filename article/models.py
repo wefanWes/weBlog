@@ -1,13 +1,15 @@
 #-*- coding:utf-8 –*-
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.core.urlresolvers import reverse
-
+from ckeditor.fields import RichTextField
 # Create your models here.
 class article(models.Model) :
     title = models.CharField(max_length = 100)
     category = models.CharField(max_length = 50, blank = True)
     date_time = models.DateTimeField(auto_now_add = True)
-    content = models.TextField(blank = True, null = True)
+    # content = models.TextField(blank = True, null = True)
+    content = RichTextUploadingField ()
 
     def __unicode__(self) :
         return self.title
